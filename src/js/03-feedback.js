@@ -19,16 +19,22 @@ function onFormData (event) {
 
 function onFormSybmit(event) {
   event.preventDefault();
-  console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
-  event.currentTarget.reset();
-  localStorage.removeItem("feedback-form-state");
+  if (email.value && message.value) {
+    console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+    event.currentTarget.reset();
+    localStorage.removeItem("feedback-form-state"); 
+    return;  
+  }
+  alert("Please input a Value");
+  return '';
 };
 
 function getSavedMessage() {
   const savedMessage = localStorage.getItem('feedback-form-state');
   if (savedMessage) {
     const parced = JSON.parse(savedMessage);
-    email.value = parced.email;
-    message.value = parced.message;
+    email.value = parced.email ? parced.email : '';
+    message.value = parced.message ? parced.message : '';
   };
+
 };
