@@ -23,6 +23,7 @@ function onFormSybmit(event) {
     console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
     event.currentTarget.reset();
     localStorage.removeItem("feedback-form-state"); 
+    formData = {};
     return;  
   }
   alert("Please input a Value");
